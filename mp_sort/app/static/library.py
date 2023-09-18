@@ -32,6 +32,20 @@ def generate():
 	# under div section with the id called "generate"	
 	document.getElementById("generate").innerHTML = array_str
 
+def bubblesort(array):
+	n = len(array)
+	swapped = True
+	while swapped:
+		swapped = False
+		new_n = 0
+		for inner_index in range(1, n):
+			if array[inner_index] < array[inner_index-1]:
+				array[inner_index], array[inner_index-1] = array[inner_index-1], array[inner_index]
+				swapped = True
+				new_n = inner_index
+		n = new_n
+	return array
+
 
 def sortnumber1():
 	'''	This function is used in Exercise 1.
@@ -49,17 +63,19 @@ def sortnumber1():
 	for i in range(len(array_str)):
 		array_str[i] = int(array_str[i])
 	
-	n = len(array_str)
-	swapped = True
-	while swapped:
-		swapped = False
-		new_n = 0
-		for inner_index in range(1, n):
-			if array_str[inner_index] < array_str[inner_index-1]:
-				array_str[inner_index], array_str[inner_index-1] = array_str[inner_index-1], array_str[inner_index]
-				swapped = True
-				new_n = inner_index
-		n = new_n
+	# n = len(array_str)
+	# swapped = True
+	# while swapped:
+	# 	swapped = False
+	# 	new_n = 0
+	# 	for inner_index in range(1, n):
+	# 		if array_str[inner_index] < array_str[inner_index-1]:
+	# 			array_str[inner_index], array_str[inner_index-1] = array_str[inner_index-1], array_str[inner_index]
+	# 			swapped = True
+	# 			new_n = inner_index
+	# 	n = new_n
+
+	array_str = bubblesort(array_str)
 
 	for i in range(len(array_str)):
 		array_str[i] = str(array_str[i])
@@ -93,9 +109,22 @@ def sortnumber2():
 
 	# Your code should start from here
 	# store the final string to the variable array_str
+
+	value = value.split(",")
+
+	for i in range(len(value)):
+		value[i] = int(value[i])
+
+	value = bubblesort(value)
+
 	pass
 
-	array_str = None
+	for i in range(len(value)):
+		value[i] = str(value[i])
+
+	array_str = ",".join(value)
+
+	# array_str = None
 
 	document.getElementById("sorted").innerHTML = array_str
 
