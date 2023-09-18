@@ -110,6 +110,7 @@ def sortnumber2():
 	# Your code should start from here
 	# store the final string to the variable array_str
 
+	value = value.rstrip()
 	value = value.split(",")
 
 	for i in range(len(value)):
