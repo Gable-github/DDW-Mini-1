@@ -174,15 +174,11 @@ class EvaluateExpression:
     print(tokens)
     for token in tokens:
       print(f"evaluating {token} token")
-      if token in "0123456789":
-        token = int(token)
-        print(f"{token} pushed into operand stack")
-        operand_stack.push(token)
-        # if operand_stack.size > 1:
-        #   print("hi")
-        #   self.process_operator(operand_stack, operator_stack)
-        #   print(operand_stack.peek())
-      elif token in "+-":
+      # if token in "0123456789":
+      #   token = int(token)
+      #   print(f"{token} pushed into operand stack")
+      #   operand_stack.push(token)
+      if token in "+-":
         print(f"{token} is in +-")
         if operator_stack.size != 0 and operator_stack.peek() not in "()":
           print(f"operand_stack size = {operand_stack.size}, operator_stack size = {operator_stack.size}")
@@ -210,7 +206,11 @@ class EvaluateExpression:
         
         print(operator_stack.pop()) # pops the starting paranthesis
         print(f"operand_stack size = {operand_stack.size}, operator_stack size = {operator_stack.size}")
-    
+      else:
+        token = int(token)
+        print(f"{token} pushed into operand stack")
+        operand_stack.push(token)
+
     while operator_stack.size > 0:
       self.process_operator(operand_stack, operator_stack)
     
